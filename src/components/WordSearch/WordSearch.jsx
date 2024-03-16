@@ -269,14 +269,18 @@ const WordSearch = ({ words, size, charset, highlight, title }) => {
                   // Container for each cell in the grid
                   <div
                     key={colIndex}
-                    className={`h-6 w-6 border text-center text-black ${highlight
-                      ? highlighted.includes(
-                        JSON.stringify({ rowIndex, colIndex, letter })
-                      )
-                        ? 'bg-blue-600'
-                        : 'bg-white'
-                      : 'bg-white'
-                      }`}
+                    
+className={`h-6 w-6 border text-center ${highlight
+  ? highlighted.includes(JSON.stringify({ rowIndex, colIndex, letter }))
+    ? rowIndex % 3 === 0
+      ? 'bg-highlight-color1'
+      : rowIndex % 3 === 1
+      ? 'bg-highlight-color2'
+      : 'bg-highlight-color3'
+    : 'bg-white'
+  : 'bg-white'
+}`}
+
                   >
                     {letter.toUpperCase()}
                   </div>
